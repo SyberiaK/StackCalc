@@ -1,12 +1,13 @@
-# StackCalc
-In development mod that aims to calculate often repeated mathematics when playing minecraft.
-Minecraft mod that calculates item quantities in stacks.
+# StackCalc Revived
 
-#### Usage
-To use it, open chat and type your number and add "s" to the end of it (e.g 1234s) and then simply press the tab key.\
-For larger numbers you can also type "sb" and that will calculate shulker boxes as well. For example "12345sb" will become "7 (Shulker Boxes) + 3 (Stacks) + 57 (Items)".\
-There is also a double chest calculator if you care. Use it the same way "dc"
+**StackCalc Revived** is a rewrite of **TomB_134**'s Fabric client mod that can calculate often repeated math tasks while playing **Minecraft** - items to stacks, shulker boxes or double chests. **StackCalc Revived** improves code style and offers some new small QOL features.
 
-"1234s" -> TAB -> "19 (Stacks) + 18 (Items)"
+## Usage
+Open chat and type in whatever number you want, then add `s` suffix (e.g `1234s`) and press `TAB` key.
 
-"12345sb" -> TAB -> "7 (Shulker Boxes) + 3 (Stacks) + 57 (Items)"
+![stacks](screenshots\stacks.png)
+
+You can use `sb` or `dc` suffixes to calculate shulker boxes or double chests as well.
+
+![shulkers](screenshots\shulkers.png)
+![double chests](screenshots\double_chests.png)

@@ -1,10 +1,13 @@
 {
-  "double" : " (Double Chest) + ",
-  "doubles" : " (Double Chests) + ",
-  "shulkerbox" : " (Shulker Box) + ",
-  "shulkerboxes": " (Shulker Boxes) + ",
-  "stack": " (Stack) + ",
-  "stacks" : " (Stacks) + ",
-  "item": " (Item) ",
-  "items": " (Items) "
+  "stackcalc.doublechest" : "%d (Double Chest)",
+  "stackcalc.doublechests" : "%d (Double Chests)",
+  "stackcalc.shulkerbox" : "%d (Shulker Box)",
+  "stackcalc.shulkerboxes": "%d (Shulker Boxes)",
+  "stackcalc.stack": "%d (Stack)",
+  "stackcalc.stacks" : "%d (Stacks)",
+  "stackcalc.item": "%d (Item)",
+  "stackcalc.items": "%d (Items)",
+
+  "modmenu.summaryTranslation.stackcalc": "Calculates item quantities in stacks, shulker boxes and double chests.",
+  "modmenu.descriptionTranslation.stackcalc": "Rewrite of TomB_134's client mod with new features.\nCalculates item quantities in stacks, shulker boxes and double chests."
 }

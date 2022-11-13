@@ -1,0 +1,13 @@
+{ 
+  "stackcalc.doublechest" : "%d (двойной сундук)",
+  "stackcalc.doublechests" : "%d (двойных сундуков)",
+  "stackcalc.shulkerbox" : "%d (шалкеровый ящик)",
+  "stackcalc.shulkerboxes": "%d (шалкеровых ящиков)",
+  "stackcalc.stack": "%d (стак)",
+  "stackcalc.stacks" : "%d (стаков)",
+  "stackcalc.item": "%d (предмет)",
+  "stackcalc.items": "%d (предметов)",
+
+  "modmenu.summaryTranslation.stackcalc": "Рассчитывает количество предметов в стаках, шалкеровых ящиках и двойных сундуках.",
+  "modmenu.descriptionTranslation.stackcalc": "Обновлённая версия клиентского мода, сделанного моддером TomB_134, с новыми функциями.\nРассчитывает количество предметов в стаках, шалкеровых ящиках и двойных сундуках."
+}

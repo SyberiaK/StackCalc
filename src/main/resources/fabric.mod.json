@@ -2,26 +2,40 @@
   "schemaVersion": 1,
   "id": "stackcalc",
   "version": "${version}",
-  "name": "StackCalc",
-  "description": "Calculates item quantities in stacks.",
+
+  "name": "StackCalc Revived",
+  "description": "Rewrite of TomB_134's client mod with new features. Calculates item quantities in stacks, shulker boxes and double chests.",
   "authors": [
+    "SyberiaK",
     "TomB_134"
   ],
   "contributors": [],
-  "contact": {},
+  "contact": {
+    "homepage": "https://modrinth.com/mod/stackcalc-revived",
+    "sources": "https://github.com/SyberiaK/StackCalc",
+    "issues": "https://github.com/SyberiaK/StackCalc/issues"
+  },
+
   "license": "MIT",
   "icon": "assets/stackcalc/icon.png",
+
   "environment": "client",
   "entrypoints": {
-    "main": ["stackcalc.StackCalc"],
-    "client": [],
-    "server": []
+    "client": [
+      "me.syberiak.stackcalc.StackCalc"
+    ]
   },
   "mixins": [
     "stackcalc.mixins.json"
   ],
+
   "depends": {
-    "fabricloader": ">=0.14.0",
-    "fabric": "*"
+    "fabricloader": ">=0.14.10",
+    "fabric": ">=0.58.0",
+    "minecraft": ">=1.19",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
   }
 }
