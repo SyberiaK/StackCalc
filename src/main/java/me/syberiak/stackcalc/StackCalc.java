@@ -16,20 +16,41 @@ public class StackCalc implements ClientModInitializer {
     @Override
     public void onInitializeClient() { LOGGER.info("Initialized successfully."); }
 
-    public static String calculateStacks(String count) { return calculateStacks(Integer.parseInt(count)); }
-    public static String calculateShulkers(String count) { return calculateShulkers(Integer.parseInt(count)); }
-    public static String calculateDoubleChests(String count) { return calculateDoubleChests(Integer.parseInt(count)); }
+    public static String calculateStacks(String count, String stackLimit) {
+        return calculateStacks(Integer.parseInt(count), Integer.parseInt(stackLimit));
+    } 
 
-    public static String calculateStacks(int count) { // Calculates stacks
-        if (count == 0) { return "0";}
+    public static String calculateShulkerBoxes(String count, String stackLimit) {
+         return calculateShulkerBoxes(Integer.parseInt(count), Integer.parseInt(stackLimit));
+    }
 
-        int stackCount = count / 64;
-        int items = count % 64;
+    public static String calculateDoubleChests(String count, String stackLimit) {
+        return calculateDoubleChests(Integer.parseInt(count), Integer.parseInt(stackLimit));
+    }
+
+    public static String calculateShulkerBoxes(int count, int stackLimit) { 
+        return calculateStorages(count, 27, stackLimit, "stackcalc.shulkerbox", "stackcalc.shulkerboxes");
+    }
+
+    public static String calculateDoubleChests(int count, int stackLimit) { 
+        return calculateStorages(count, 54, stackLimit, "stackcalc.doublechest", "stackcalc.doublechests");
+    }
+
+    /*
+     * Calculates groups (used for stacks)
+     */
+    public static String calculateStacks(int count, int stackLimit) {
+        if (count == 0 || stackLimit == 0) return "0";
+
+        int stacks = count / stackLimit;
+        int items = count % stackLimit;
         ArrayList<String> result = new ArrayList<String>();
 
-        if (stackCount > 0) {
-            String stackStringKey = (stackCount == 1) ? "stackcalc.stack" : "stackcalc.stacks";
-            result.add(Text.translatable(stackStringKey, stackCount).getString());
+        if (stacks > 0) {
+            String stackStringKey = (stacks == 1) ? "stackcalc.stack" : "stackcalc.stacks";
+            String stackString = Text.translatable(stackStringKey, stacks).getString();
+            if (stackLimit != 64) stackString += String.format("(%d)", stackLimit);
+            result.add(stackString);
         }
         if (items > 0) {
             String itemStringKey = (items == 1) ? "stackcalc.item" : "stackcalc.items";
@@ -38,39 +59,24 @@ public class StackCalc implements ClientModInitializer {
 
         return String.join(SEPARATOR, result);
     }
-     
-    public static String calculateShulkers(int count) { // Calculates shulker boxes
-        if (count == 0) { return "0";}
 
-        int shulkerCount = count / 1728;
-        int remainder = count % 1728;
+    /*
+     * Calculates storages (used for shulker boxes and double chests)
+     */
+    public static String calculateStorages(int count, int slotsCount, int stackLimit, String stringKey1, String stringKey2) {
+        if (count == 0 || slotsCount == 0 || stackLimit == 0) return "0";
+
+        int storages = count / (stackLimit * slotsCount);
+        int remainder = count % (stackLimit * slotsCount);
         ArrayList<String> result = new ArrayList<String>();
 
-        if (shulkerCount > 0) {
-            String shulkerStringKey = (shulkerCount == 1) ? "stackcalc.shulkerbox" : "stackcalc.shulkerboxes";
-            result.add(Text.translatable(shulkerStringKey, shulkerCount).getString());
+        if (storages > 0) {
+            String storageStringKey = (storages == 1) ? stringKey1 : stringKey2;
+            String storageString = Text.translatable(storageStringKey, storages).getString();
+            if (stackLimit != 64) storageString += String.format("(%d)", stackLimit);
+            result.add(storageString);
         }
-        if (remainder > 0) {
-            result.add(StackCalc.calculateStacks(remainder));
-        }
-
-        return String.join(SEPARATOR, result);
-    }
-
-    public static String calculateDoubleChests(int count) { // Calculates double chests
-        if (count == 0) { return "0";}
-
-        int doubleCount = count / 3456;
-        int remainder = count % 3456;
-        ArrayList<String> result = new ArrayList<String>();
-
-        if (doubleCount > 0) {
-            String doubleStringKey = (doubleCount == 1) ? "stackcalc.doublechest" : "stackcalc.doublechests";
-            result.add(Text.translatable(doubleStringKey, doubleCount).getString());
-        }
-        if (remainder > 0) {
-            result.add(StackCalc.calculateStacks(remainder));
-        }
+        if (remainder > 0) result.add(StackCalc.calculateStacks(remainder, stackLimit));
 
         return String.join(SEPARATOR, result);
     }
