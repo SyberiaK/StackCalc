@@ -12,7 +12,7 @@ You can use `sb` or `dc` suffixes to calculate shulker boxes or double chests as
 ![shulkers](media/shulkers.gif)
 ![double chests](media/double_chests.gif)
 
-**1.1 feature:** You can also change stack size by typing `-<stack limit>` after the suffix.
+**1.1 feature:** You can also change stack size by typing `-<stack size>` after the suffix.
 
 ![stacks-16](media/stacks-16.gif)
 ![double chests-234](media/double_chests-234.gif)
