@@ -18,46 +18,48 @@ public class ChatScreenMixin {
 
     @Inject(at = @At("HEAD"), method = "keyPressed(III)Z")
     private void keyPressed(int keyCode, int scanCode, int modifiers, CallbackInfoReturnable<?> callbackInfo) {
-        if (keyCode == 258) {
-            String text = chatField.getText();
+        if (keyCode == StackCalc.TAB_KEYCODE) {
+            String text = chatField.getText().trim();
 
-            if (text.endsWith("s") || text.endsWith("sb") || text.endsWith("dc") || 
-            text.contains("s-") || text.contains("sb-") || text.contains("dc-")) {
+            if (text.contains("s") || text.contains("sb") || text.contains("dc")) {
 				String call = text.substring(text.lastIndexOf(" ") + 1);
 				text = text.substring(0, text.lastIndexOf(" ") + 1);
-                String limit = "";
 
                 String suffix;
-                if (call.endsWith("s") || call.contains("s-")) { 
-                    suffix = "s";
-                } else if (call.endsWith("sb") || call.contains("sb-")) { 
+                if (call.contains("dc")) { 
+                    suffix = "dc";
+                } else if (call.contains("sb")) { 
                     suffix = "sb";
-                } else { 
-                    suffix = "dc"; 
-                }
-
-                if (call.contains("s-") || call.contains("sb-") || call.contains("dc-")) {
+                } else if (call.contains("s")) { 
+                    suffix = "s";
+                } else return;
+                
+                String limitStr = "";
+                if (call.contains("-")) {
                     String afterSuffixStr = call.substring(call.lastIndexOf("-") + 1);
                     if (isNumeric(afterSuffixStr) && afterSuffixStr.length() <= 9) {
-                        limit = afterSuffixStr;
+                        limitStr = afterSuffixStr;
                     }
                 }
-
-                String str;
-                if (limit != "") {
-                    str = call.substring(0, call.length() - (suffix + "-" + limit).length());
+                
+                String countStr;
+                if (limitStr != "") {
+                    countStr = call.substring(0, call.length() - (suffix + "-" + limitStr).length());
                 } else {
-                    str = call.substring(0, call.length() - suffix.length());
-                    limit = "64";
+                    countStr = call.substring(0, call.length() - suffix.length());
+                    limitStr = "64";
                 }
 
-                if (!isNumeric(str)) return;
-                if (str.length() > 9) return;
+                if (!isNumeric(countStr)) return;
+                if (countStr.length() > 9) return;
+
+                int count = Integer.parseInt(countStr);
+                int limit = Integer.parseInt(limitStr);
 
                 String result = switch (suffix) {
-                    case "s": yield StackCalc.calculateStacks(str, limit);
-                    case "sb": yield StackCalc.calculateShulkerBoxes(str, limit);
-                    case "dc": yield StackCalc.calculateDoubleChests(str, limit);
+                    case "s": yield StackCalc.calculateStacks(count, limit);
+                    case "sb": yield StackCalc.calculateShulkerBoxes(count, limit);
+                    case "dc": yield StackCalc.calculateDoubleChests(count, limit);
                     default: yield "";
                 };
                 
