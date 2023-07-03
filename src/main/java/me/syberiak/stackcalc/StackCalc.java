@@ -12,21 +12,10 @@ public class StackCalc implements ClientModInitializer {
 
     public static final Logger LOGGER = LoggerFactory.getLogger("StackCalc");
 	public static final String SEPARATOR = " + ";
+    public static final int TAB_KEYCODE = 258;
 
     @Override
     public void onInitializeClient() { LOGGER.info("Initialized successfully."); }
-
-    public static String calculateStacks(String count, String stackLimit) {
-        return calculateStacks(Integer.parseInt(count), Integer.parseInt(stackLimit));
-    } 
-
-    public static String calculateShulkerBoxes(String count, String stackLimit) {
-         return calculateShulkerBoxes(Integer.parseInt(count), Integer.parseInt(stackLimit));
-    }
-
-    public static String calculateDoubleChests(String count, String stackLimit) {
-        return calculateDoubleChests(Integer.parseInt(count), Integer.parseInt(stackLimit));
-    }
 
     public static String calculateShulkerBoxes(int count, int stackLimit) { 
         return calculateStorages(count, 27, stackLimit, "stackcalc.shulkerbox", "stackcalc.shulkerboxes");
