@@ -34,5 +34,13 @@
     "fabric": "*",
     "minecraft": ">=1.19",
     "java": ">=17"
+  },
+
+  "custom": {
+    "mc-publish": {
+      "curseforge": "701564",
+      "modrinth": "2nDkyZf2",
+      "loaders": ["fabric", "quilt"]
+    }
   }
 }
