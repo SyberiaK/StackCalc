@@ -1,12 +1,11 @@
 {
   "required": true,
-  "minVersion": "0.8",
   "package": "me.syberiak.stackcalc.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "ChatScreenMixin"
   ],
   "client": [
-    "ChatScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
