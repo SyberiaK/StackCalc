@@ -113,7 +113,7 @@ public class StackCalc implements ClientModInitializer {
 
         if (storages > 0) {
             String storageStringKey = (storages == 1) ? stringKey1 : stringKey2;
-            String storageString = Text.translatable(storageStringKey, storages).toString();
+            String storageString = Text.translatable(storageStringKey, storages).getString();
             if (stackLimit != DEFAULT_STACK_LIMIT) storageString += "(%d)".formatted(stackLimit);
             result.add(storageString);
         }
