@@ -2,10 +2,9 @@
   "required": true,
   "package": "me.syberiak.stackcalc.mixin",
   "compatibilityLevel": "JAVA_17",
-  "mixins": [
-    "ChatScreenMixin"
-  ],
+  "mixins": [],
   "client": [
+    "ChatScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
